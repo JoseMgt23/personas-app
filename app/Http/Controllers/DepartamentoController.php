@@ -75,7 +75,11 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamentos = DB::table('tb_departamento')
+            ->orderBy('depa_nomb')
+            ->get();
+        return view('departamento.edit', ['departamento' => $departamento, 'departamentos' => $departamentos]);
     }
 
     /**
@@ -87,7 +91,17 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->depa_nomb = $request->name;
+        $departamento->depa_codi = $request->code;
+        $departamento->save();
+
+        $departamentos = DB::table('tb_departamento')
+        ->join('tb_departamento', 'tb_departamento.depa_codi')
+        ->select('tb_departamento.*', "tb_departamento.depa_nomb")
+        ->get();
+
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
     /**
@@ -105,7 +119,7 @@ class DepartamentoController extends Controller
         ->join('tb_departamento', 'tb_departamento.depa_codi')
         ->select('tb_departamento.*', "tb_departamento.depa_nomb")
         ->get();
-        
+
         return view('departamento.index', ['departamentos' => $departamentos]);
     }
 }

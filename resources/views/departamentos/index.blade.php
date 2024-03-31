@@ -28,7 +28,7 @@
             <th scope="row">{{$departamento->depa_codi}}</th>
             <td>{{$departamento->depa_nomb}}</td>
             <td>
-                
+                <a href="{{route('departamentos.edit',['departamento'=>$depa_codi])}}" class="btn btn-info">Edit </a></li>
                 <form action="{{ route('departamento.destroy',['departamento' => $departamento->depa_codi])}}" 
                   method="POST" style="display: inline-block">
                 @method('delete')

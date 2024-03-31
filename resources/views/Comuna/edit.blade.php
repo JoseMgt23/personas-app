@@ -13,7 +13,7 @@
   <body>
     <div class="container">
     <h1>Edit Commune</h1>
-    <form method="POST" action="{{route('comunas.update', ['comuna' => $coumna->comu_codi])}}">
+    <form method="POST" action="{{route('comunas.update', ['comuna' => $comuna->comu_codi])}}">
         @method('put')
         @csrf
         <div class="mb-3">
@@ -33,7 +33,6 @@
             <option selected value="{{$municipio->muni_codi}}">{{$municipio->muni_nomb}}</option>
             @else
             <option value="{{$municipio->muni_codi}}">{{$municipio->muni_nomb}}</option>
-            @endforeach
             @endforeach
         </select>
         <div class="mb-3">
