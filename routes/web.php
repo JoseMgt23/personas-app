@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controller\MunicipioController;
 use App\Http\Controllers\ComunaController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::get('/comunas/create', [ComunaController::class, 'create'])->name('coumna
 Route::delete('/comunas/{comuna}',[ComunaController::class, 'destroy'])->name('coumnas.destroy');
 Route::put('/comunas/{comuna}', [ComunaController::class, 'update'])->name('coumnas.update');
 Route::get('/comunas/{comuna}/edit', [ComunaController::class, 'edit'])->name('comunas.edit');
+
+//municipios
+Route::get('/municipios', [MunicipioController::class, 'index']);
