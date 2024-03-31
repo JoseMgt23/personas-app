@@ -28,6 +28,8 @@
             <th scope="row">{{$municipio->muni_codi}}</th>
             <td>{{$municipio->muni_nomb}}</td>
             <td>
+                <a href="{{route('municipios.edit', ['municipio'=>$municipio->muni_codi])}}" class="btn btn-info">Edit</a></li>
+                
                 <form action="{{ route('municipios.destroy', ['municipio' => $municipio->muni_codi])}}"
                     method="POST" style="display: inline-block">
                     @method('delete')
