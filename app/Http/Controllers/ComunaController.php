@@ -43,16 +43,14 @@ class ComunaController extends Controller
      */
     public function store(Request $request)
     {
-        $comuna = new Comuna();
-
-        $comuna->coum_nomb = $request->name;
-        $comuna->muni_codi = $request->code;
-        $comuna->save();
+        $comuna = Comuna::find($id);
+        $comuna->delete();
 
         $comunas = DB::table('tb_comuna')
             ->join('tb_municipio', 'tb_coumna.muni_codi', '=', 'tb_municipio.muni_codi')
             ->select('tb_coumna.*', "tb_municipio.muni_nomb")
             -get();
+
         return view('comuna.index', ['coumnas' => $comunas]);
     }
 
