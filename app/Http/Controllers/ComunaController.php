@@ -43,7 +43,8 @@ class ComunaController extends Controller
      */
     public function store(Request $request)
     {
-        $comuna = Comuna::find($id);
+        $comuna = new Comuna();
+        
         $comuna->comu_nomb = $request->name;
         $comuna->muni_codi = $request->code;
         $comuna->save();
