@@ -14,8 +14,11 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        $municipios = Municipio::all();
-        return view('municipio.index', ['municipios' => $municipios]);
+        $municipios = DB::table('tb_comuna')
+            ->join('tb_municipio', 'tb_municipio.muni_codi')
+            -select('tb_municipio.*', 'tb_municipio.muni_nomb')
+            ->get();
+        return view ('municipio.index', ['municipio' => $municipios]);
     }
 
     /**

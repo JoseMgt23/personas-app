@@ -25,7 +25,6 @@
             @foreach ($municipios as $municipio)
           <tr>
             <th scope="row">{{$municipio->muni_codi}}</th>
-            <td>{{$municipio->comu_nomb}}</td>
             <td>{{$municipio->muni_nomb}}</td>
             <td>Actions</td>
           </tr>
